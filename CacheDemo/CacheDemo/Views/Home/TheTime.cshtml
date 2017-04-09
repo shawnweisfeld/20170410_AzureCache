@@ -1,0 +1,10 @@
+﻿@model CacheDemo.ViewModels.Home.TheTimeViewModel
+@{
+    ViewBag.Title = "The time is";
+}
+
+<h2>@Request.Url.AbsolutePath</h2>
+
+<a href="@Request.Url.AbsolutePath">Re-request</a>
+
+<h1>@Model.TheTime</h1>
