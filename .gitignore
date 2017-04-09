@@ -1,3 +1,9 @@
+# My additions
+.vs
+*/*/bin
+*/*/obj
+*/packages
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
