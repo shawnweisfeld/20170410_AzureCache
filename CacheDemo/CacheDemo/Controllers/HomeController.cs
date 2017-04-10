@@ -7,14 +7,50 @@ using System.Web.Mvc;
 using System.Web.UI;
 using System.Configuration;
 using StackExchange.Redis;
+using System.Data.SqlClient;
+using Microsoft.ApplicationInsights;
 
 namespace CacheDemo.Controllers
 {
     public class HomeController : Controller
     {
+        TelemetryClient _ai = null;
+        public HomeController()
+        {
+            _ai = new TelemetryClient();
+        }
+
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Database()
+        {
+            var connString = ConfigurationManager.ConnectionStrings["AdventureWorks"].ConnectionString;
+            var sql = "SELECT GETDATE()";
+            var date = DateTime.MinValue;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                try
+                {
+                    conn.Open();
+                    date = (DateTime)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    _ai.TrackException(ex);
+                }
+            }
+
+            var message = $"The time is now {date.ToLongTimeString()}";
+            var vm = new ViewModels.Home.TheTimeViewModel()
+            {
+                TheTime = message
+            };
+
+            return View("TheTime", vm);
         }
         
         public ActionResult NoCache()
