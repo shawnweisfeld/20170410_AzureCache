@@ -4,7 +4,7 @@
 */*/obj
 */packages
 */*/Properties/PublishProfiles
-*/*/Web.Debug.config
+*/*/MySecrets.config
 
 # Windows image file caches
 Thumbs.db

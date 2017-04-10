@@ -173,6 +173,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Connected Services\Application Insights\ConnectedService.json" />
+    <None Include="MySecrets.config" />
     <None Include="Properties\PublishProfiles\sweisfelCacheDemo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -186,9 +187,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -199,7 +197,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\TheTime.cshtml" />
     <Content Include="Views\Home\CDN.cshtml" />
-    <Content Include="WebSecrets.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
